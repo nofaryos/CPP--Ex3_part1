@@ -267,7 +267,7 @@ TEST_CASE("TEST FOR FUNCTION: operator<<"){
     NumberWithUnits b(6, "km");
     NumberWithUnits c(5, "kg");
 
-    stringstream str1, str2, str3;
+    ostringstream str1, str2, str3;
     str1 << a;    
     str2 << b;    
     str3 << c;   
