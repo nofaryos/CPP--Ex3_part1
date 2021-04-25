@@ -8,6 +8,31 @@ using namespace std;
 using namespace ariel;
 
 
+TEST_CASE("TEST FOR FUNCTIONS: operator== , operator!= "){
+		ifstream units_file{"units.txt"};
+		NumberWithUnits::read_units(units_file);
+		bool ans;
+		
+		NumberWithUnits a{2, "kg"}; 
+		NumberWithUnits b{3, "kg"};
+		NumberWithUnits c{2, "kg"};
+		NumberWithUnits d{5, "kg"};
+		NumberWithUnits e{4, "kg"};
+		NumberWithUnits f{4, "cm"};
+		
+		NumberWithUnits z = a + b; //z = 5
+		
+		//operator==
+		CHECK(a == c);
+		CHECK(z == d);
+		CHECK_THROWS(ans = (e == f)); //illegal
+		
+		//operator!=
+		CHECK(a != b);
+		CHECK(b != d);
+		CHECK_THROWS(ans = (b != f)); //illegal			
+}
+
 TEST_CASE("TEST FOR OPERATORS: operator+=, operator-="){
 		ifstream units_file{"units.txt"};
 		NumberWithUnits::read_units(units_file);
@@ -123,31 +148,6 @@ TEST_CASE("TEST FOR FUNCTIONS: operator++(...), operator--(...) (postfix)"){
 		CHECK(z == b);
 		CHECK(a == c);		
 }	
-
-TEST_CASE("TEST FOR FUNCTIONS: operator== , operator!= "){
-		ifstream units_file{"units.txt"};
-		NumberWithUnits::read_units(units_file);
-		bool ans;
-		
-		NumberWithUnits a{2, "kg"}; 
-		NumberWithUnits b{3, "kg"};
-		NumberWithUnits c{2, "kg"};
-		NumberWithUnits d{5, "kg"};
-		NumberWithUnits e{4, "kg"};
-		NumberWithUnits f{4, "cm"};
-		
-		NumberWithUnits z = a + b; //z = 5
-		
-		//operator==
-		CHECK(a == c);
-		CHECK(z == d);
-		CHECK_THROWS(ans = (e == f)); //illegal
-		
-		//operator!=
-		CHECK(a != b);
-		CHECK(b != d);
-		CHECK_THROWS(ans = (b != f)); //illegal			
-}
 
 TEST_CASE("TEST FOR FUNCTIONS: operator<, operator>, operator<=, operator>="){
 		ifstream units_file{"units.txt"};
